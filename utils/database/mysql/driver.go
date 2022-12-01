@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"be13/clean/config"
+	userRepo "be13/clean/features/user/repository"
 	"fmt"
 	"log"
 
@@ -17,4 +18,8 @@ func InitDB(cfg *config.AppConfig) *gorm.DB {
 	}
 
 	return db
+}
+
+func DBMigration(db *gorm.DB) {
+	db.AutoMigrate(&userRepo.User{})
 }

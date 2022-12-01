@@ -14,6 +14,8 @@ func main() {
 	db := mysql.InitDB(cfg)
 	// db := posgresql.InitDB(cfg)
 
+	mysql.DBMigration(db)
+
 	e := echo.New()
 
 	factory.InitFactory(e, db)
